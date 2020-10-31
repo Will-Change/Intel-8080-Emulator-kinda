@@ -38,7 +38,7 @@ private:
     uint8_t ZSP[0X100];
     uint8_t Z;// ZERO FLAG; set to 1 if current operation results in Zero, or two values match on a CMP operation
     uint8_t S;// SUBTRACT FLAG; set to 1 if a subtraction was performed
-    uint8_t P;//parity or half carry
+    uint8_t P;//parity 
     uint8_t C;// CARRY FLAG; set to 1 if a carry occured in the last operation or if A is the smaller value on CP instruction
 
     uint8_t AC;//AUXILARY CARRY
