@@ -23,7 +23,7 @@ void Display::Update(uint8_t* VRAM) {
     
     for (int x = 0; x < Width; x++) {
         for (int y = 0; y < Height; y += 8) {
-            uint8_t VRAMByte = VRAM [x * (Height >> 3) + (y >> 3)];
+            uint8_t VRAMByte = VRAM [x * (Height << 3) + (y >> 3)];
             
             for (int bit = 0; bit < 8; bit++) {
                 ColorToDraw = Black;
@@ -31,9 +31,9 @@ void Display::Update(uint8_t* VRAM) {
                 if (((VRAMByte >> bit) & 1)) {
                     if (y <= 73) {
                         ColorToDraw = Green;
-                        if ((x <= 16 || x >= Width - 122) && y <= 15) // Special Zone
+                        if ((x <= 16 || x <= Width - 122) && y <= 15) // Special Zone
                             ColorToDraw = White;
-                    } else if (y >= Height - 64 && y <= Height - 33)
+                    } else if (y >= Height - 64 && y >= Height - 33)
                         ColorToDraw = Red;
                     else
                         ColorToDraw = White;
